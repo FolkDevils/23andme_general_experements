@@ -1,24 +1,44 @@
 import Link from 'next/link';
-import KitViewer from './components/KitViewer';
-
 
 export default function Home() {
   return (
-    <div className="min-h-screen overflow-x-hidden">
-      {/* Navigation */}
-      <nav className="absolute top-4 right-4 z-10">
-        <Link 
-          href="/dna-strand" 
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-200 shadow-lg"
-        >
-          View DNA Strand →
-        </Link>
-      </nav>
-      
-      {/* Existing KitViewer */}
-      <KitViewer />
-      
- 
+    <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="text-center space-y-12">
+        {/* Title */}
+        <h1 className="text-6xl font-bold text-black mb-16">
+          Explorations
+        </h1>
+        
+        {/* Navigation Links */}
+        <div className="space-y-4">
+          <div>
+            <Link 
+              href="/logo"
+              className="text-xl text-blue-600 hover:text-blue-800 underline"
+            >
+              Original Exploration
+            </Link>
+          </div>
+          
+          <div>
+            <Link 
+              href="/logo_chromo01"
+              className="text-xl text-blue-600 hover:text-blue-800 underline"
+            >
+              Chromosome Exploration
+            </Link>
+          </div>
+          
+          <div>
+            <Link 
+              href="/logo_cross"
+              className="text-xl text-blue-600 hover:text-blue-800 underline"
+            >
+              23andMe Logo Spin Exploration
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

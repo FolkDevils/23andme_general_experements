@@ -103,7 +103,7 @@ function Scene() {
     brightness,
     contrast,
     saturation
-  } = useControls({ 
+  } = useControls('Kit Viewer', { 
     shadowOpacity: { value: 0.7, min: 0, max: 1, step: 0.1 },
     ambientIntensity: { value: 0.8, min: 0, max: 2, step: 0.1 },
     directionalIntensity: { value: 0.7, min: 0, max: 3, step: 0.1 },
