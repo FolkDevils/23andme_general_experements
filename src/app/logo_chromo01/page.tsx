@@ -24,8 +24,9 @@ export default function LogoChromo01() {
 	const totalRectHeightPx = useMemo(() => VIEW_HEIGHT_PX + OVERLAP_PX, []);
 
 	// Leva controls
-	const { startTopHeight, finalCount, hasBackground, strokeWidth } = useControls('Chromosome Animation', {
+	const { startTopHeight, endTopHeight, finalCount, hasBackground, strokeWidth } = useControls('Chromosome Animation', {
 		startTopHeight: { value: 195, min: 120, max: 400, step: 1, label: 'Start Top Height' },
+		endTopHeight: { value: 295, min: 120, max: 590, step: 1, label: 'End Top Height' },
 		finalCount: { value: 8, min: 1, max: 16, step: 1, label: 'Final Count' },
 		hasBackground: { value: false, label: 'Background' },
 		strokeWidth: { value: 3.5, min: 0.5, max: 8, step: 0.5, label: 'Stroke Width' },
@@ -141,7 +142,7 @@ export default function LogoChromo01() {
 			duration: totalRotationDuration,
 			onUpdate: function() {
 				const progress = this.progress();
-				const currentTopHeight = startTopHeight + (295 - startTopHeight) * progress;
+											const currentTopHeight = startTopHeight + (endTopHeight - startTopHeight) * progress;
 				const clampedTop = Math.max(minTopHeight, Math.min(maxTopHeight, currentTopHeight));
 				const bottomHeight = Math.max(0, totalRectHeightPx - OVERLAP_PX - clampedTop);
 
@@ -170,7 +171,7 @@ export default function LogoChromo01() {
 				timelineRef.current.kill();
 			}
 		};
-	}, [finalCount, startTopHeight, strokeWidth, runAnimation]);
+	}, [finalCount, startTopHeight, endTopHeight, strokeWidth, runAnimation]);
 
 	// Update colors when background mode changes
 	useEffect(() => {
